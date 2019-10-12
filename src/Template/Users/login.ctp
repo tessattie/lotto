@@ -17,7 +17,7 @@
                                                 <h4 class="mb-0">Authentification</h4>
                                             </div>
                                         </div>
-                                        <p class="px-2">Bienvenue! Authentifiez vous...</p>
+                                        <p class="px-2">Bienvenue! Authentifiez-vous...</p>
                                         <div class="card-content">
                                             <div class="card-body pt-1" style="padding-bottom:15px">
                                             <?= $this->Form->create() ?>
@@ -27,7 +27,7 @@
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>
-                                                        <label for="user-name">Nom d'utilisateur</label>
+                                                        <label for="user-name">Nom d'Utilisateur</label>
                                                     </fieldset>
 
                                                     <fieldset class="form-label-group position-relative has-icon-left">
@@ -37,10 +37,7 @@
                                                         </div>
                                                         <label for="user-password">Mot de Passe</label>
                                                     </fieldset>
-                                                    <div class="form-group d-flex justify-content-between align-items-center">
-                                                        <div class="text-right"><a href="auth-forgot-password.html" class="card-link">Forgot Password?</a></div>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary float-right btn-inline" name="submit" style="margin-bottom:20px">Login</button>
+                                                    <button type="submit" class="btn btn-primary float-right btn-inline" name="submit" style="margin-bottom:20px">Valider</button>
                                                 <?= $this->Form->end() ?>
                                             </div>
                                         </div>
