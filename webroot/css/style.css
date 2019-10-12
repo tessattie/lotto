@@ -1,0 +1,84 @@
+.modal .form-control, .panel-title{
+	margin-top:8px;
+}
+.modallabel{
+	margin-top:15px;
+}
+.dataTables_filter input, .dataTables_length select{
+	border:1px solid #c0c0c0;
+	border-radius:3px;
+}
+.text-center{
+	text-align:center;
+}
+.error-message{
+	font-size:9px;
+	margin-bottom:5px;
+	color:red;
+	margin-top:3px;
+}
+div.message{
+	background-color:#f2dede;
+	padding:6px;
+	margin-top:10px;
+	text-align:center;
+	border-radius:3px;
+	color:red;
+}
+div.message.success{
+	background-color:#dff0d8;
+	color:black;
+}
+.DetailDisplay{
+	display:none;
+}
+
+.loginForm{
+	margin-top:10px;
+}
+.form-error{
+	border:1px solid red;
+	color:red;
+}
+#duedatefield, .guest_checkout{
+	display:none;
+}
+.bg-danger, .bg-success{
+	padding:10px;
+}
+.close.delete{
+	margin-top:0px!important;
+}
+.categoryContainer > h4{
+	background: #F2F2F2;
+	padding:10px;
+	border-radius:3px;
+	margin-top:0px;
+}
+div.tab-content{
+  padding: 35px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+a.nav-link.active{
+  background:#ddd;
+  color:black;
+}
+a.nav-link{
+  color:black;
+}
+.input.datetime > select, .input.date > select{
+	border:1px solid #c0c0c0;
+	padding:8px;
+	margin-top:10px;
+	margin-right:4px;
+	border-radius:3px;
+}
+.hidden{
+	display:none;
+}
+.show{
+	display:block;
+}
+
