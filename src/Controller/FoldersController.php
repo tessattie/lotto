@@ -37,7 +37,7 @@ class FoldersController extends AppController
                        $filee->location = '';
                        $filee->user_id = $this->Auth->user()['id'];
                         if ($ident = $this->Folders->Files->save($filee)) {
-                            $loca = $this->checkFile($this->request->data['location'], $ident['id']);
+                            $loca = $this->checkFile($this->request->data['location'], $ident['id'], $ident['extension']);
                             $newFile = $this->Folders->Files->get($ident['id']);
                             $newFile->location = $loca;
                             $this->Folders->Files->save($newFile);
