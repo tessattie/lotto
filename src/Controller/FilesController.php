@@ -58,7 +58,7 @@ class FilesController extends AppController
                $file->location = '';
                $file->user_id = $this->Auth->user()['id'];
                 if ($id = $this->Files->save($file)) {
-                    $loca = $this->checkFile($this->request->data['location'], $id['id']);
+                    $loca = $this->checkFile($this->request->data['location'], $id['id'], $id['extension']);
                     $newFile = $this->Files->get($id['id']);
                     $newFile->location = $loca;
                     $this->Files->save($newFile);
@@ -95,7 +95,7 @@ class FilesController extends AppController
             $file = $this->Files->patchEntity($file, $this->request->getData());
 
             if(!empty($this->request->data['location']['tmp_name'])){
-                $loca = $this->checkFile($this->request->data['location'], $file->id);
+                $loca = $this->checkFile($this->request->data['location'], $file->id, $file->extension);
                 $file->location = $loca;
             }
                        
