@@ -41,7 +41,7 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
-        define("ROOT_DIREC", '/yann');
+        define("ROOT_DIREC", '/lotto');
 
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
