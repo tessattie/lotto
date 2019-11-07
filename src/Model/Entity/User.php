@@ -59,6 +59,11 @@ class User extends Entity
         'password'
     ];
 
+    protected function _getName()
+    {
+        return $this->_properties['first_name'] . ' ' . $this->_properties['last_name'];
+    }
+
 
     protected function _setPassword($password){
         $hasher = new DefaultPasswordHasher();

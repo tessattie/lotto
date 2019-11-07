@@ -52,6 +52,7 @@ $cakeDescription = 'LOTO LAKAY';
     <?= $this->Html->css('theme/themes/dark-layout.css') ?>
     <?= $this->Html->css('theme/components.css') ?>
     <?= $this->Html->css('theme/themes/semi-dark-layout.css') ?>
+    <?= $this->Html->css('jquery-ui.css') ?>
     <!-- <link rel="stylesheet" type="text/css" href="<?= ROOT_DIREC ?>/css/bootstrap.css"> --><!-- 
     <link rel="stylesheet" type="text/css" href="<?= ROOT_DIREC ?>/css/bootstrap-extended.css">
     <link rel="stylesheet" type="text/css" href="<?= ROOT_DIREC ?>/css/colors.css">
@@ -124,7 +125,7 @@ $cakeDescription = 'LOTO LAKAY';
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" style="overflow-y:scroll;height:100vh">
                 <li class=" navigation-header"><span>Catalogue</span>
                 </li>
                 <?php  if($current_user['role_id'] == 1) : ?>
@@ -143,12 +144,19 @@ $cakeDescription = 'LOTO LAKAY';
                 <li class="nav-item"><a href="<?= ROOT_DIREC ?>/users"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Colors">Utilisateurs</span></a></li>
                 <li class=" nav-item"><a href="<?= ROOT_DIREC ?>/roles"><i class="feather icon-check"></i><span class="menu-title" data-i18n="Colors">Rôles</span></a></li>
 
-                <li class=" navigation-header"><span>Raccourcis</span></li>
-                <li class=" nav-item"><a href="<?= ROOT_DIREC ?>/files/add"><i class="feather icon-plus"></i><span class="menu-title" data-i18n="Chat">Fichier</span></a>
+                <li class=" navigation-header"><span>Banques</span></li>
+                <li class=" nav-item"><a href="<?= ROOT_DIREC ?>/banks/map"><i class="feather icon-map"></i><span class="menu-title" data-i18n="Chat">Map</span></a>
                 </li>
-                <li class=" nav-item"><a href="<?= ROOT_DIREC ?>/folders/add"><i class="feather icon-plus"></i><span class="menu-title" data-i18n="Email">Répertoire</span></a>
+                <li class=" nav-item"><a href="<?= ROOT_DIREC ?>/owners"><i class="feather icon-feather"></i><span class="menu-title" data-i18n="Chat">Propriétaires</span></a>
                 </li>
-                <li class="nav-item"><a href="<?= ROOT_DIREC ?>/users/add"><i class="feather icon-plus"></i><span class="menu-title" data-i18n="Colors">Utilisateur</span></a>
+                <li class=" nav-item"><a href="<?= ROOT_DIREC ?>/managers"><i class="feather icon-users"></i><span class="menu-title" data-i18n="Chat">Responsables</span></a>
+                </li>
+                <li class=" nav-item"><a href="<?= ROOT_DIREC ?>/sellers"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Chat">Vendeurs</span></a>
+                </li>
+                <li class=" nav-item"><a href="<?= ROOT_DIREC ?>/banks"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Chat">Banques</span></a>
+                </li>
+                <li class=" nav-item"><a href="<?= ROOT_DIREC ?>/settings"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Chat">Configuration</span></a>
+                </li>
                 <?php   endif; ?>
                 <li class=" navigation-header"><span>Compte</span>
                 </li>
@@ -190,7 +198,6 @@ $cakeDescription = 'LOTO LAKAY';
                             </ul>
                         </div>
                         <ul class="nav navbar-nav float-right">
-                            <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li>
                             <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                     <div class="user-nav d-sm-flex d-none" style="padding-top:6px"><span class="user-name text-bold-600"><?= $current_user['first_name']." ".$current_user['last_name'] ?></span><span class="user-status">Disponible</span></div>
                                 </a>
@@ -219,9 +226,32 @@ $cakeDescription = 'LOTO LAKAY';
 
     <footer>
     </footer>
+    <style>
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ddd; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+</style>
     <?= $this->Html->script("jquery-3.2.1.min.js") ?>
     <?= $this->Html->script("popper.min.js") ?>
     <?= $this->Html->script("bootstrap.min.js") ?>
+    <?= $this->Html->script("jquery-ui.js") ?>
+
+    
 </body>
 </html>
