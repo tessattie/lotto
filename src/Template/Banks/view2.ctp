@@ -49,10 +49,12 @@ $ouinon = array('Oui', 'Non')
                 </div>
                 <div class="col-md-6" style="text-align:right">
                     <strong style="text-align:right"><?= $bank->name ?></strong><hr>
-                    <strong><?= $bank->address ?></strong><hr>
+                    
+                    
+                    <strong><?=(!empty($bank->address)) ? $bank->address : " - " ?></strong><hr>
                     <strong style="text-align:right"><?= $bank->manager->first_name . " " . strtoupper($bank->manager->last_name)  ?></strong><hr>
                     <strong><?= $stations[$bank->type] ?></strong><hr>
-                    <strong><?= $bank->rooms ?></strong><hr>
+                    <strong><?=(!empty($bank->rooms)) ? $bank->rooms : " - " ?></strong><hr>
                     <strong><span class="badge badge-danger"><?= number_format($bank->price, 0, ".", ",") ?> HTG</span></strong><hr>
                     <strong><?= date("j M Y", strtotime($bank->rental_date)) ?></strong><hr>
                     <strong><?= date("j M Y", strtotime($bank->expiration)) ?></strong>
@@ -90,7 +92,7 @@ $ouinon = array('Oui', 'Non')
                         <strong>-</strong><hr>
                     <?php endif; ?>
                     
-                    <strong><?= $bank->manager->nif ?></strong><hr>
+                    <strong><?=(!empty($bank->manager->nif)) ? $bank->manager->nif : " - " ?></strong><hr>
                     <?php if(!empty($bank->manager->frais_fonctionnement)) : ?>
                         <strong><?= number_format($bank->manager->frais_fonctionnement, 0, ".", ",") ?> HTG</strong><hr>
                     <?php else : ?>

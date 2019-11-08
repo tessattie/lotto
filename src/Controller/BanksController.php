@@ -22,7 +22,7 @@ class BanksController extends AppController
         $this->paginate = [
             'contain' => ['Managers', 'Users']
         ];
-        $banks = $this->paginate($this->Banks);
+        $banks = $this->Banks->find('all');
 
         $this->set(compact('banks'));
     }
@@ -41,6 +41,35 @@ class BanksController extends AppController
         'sort' => ['Settings.type' => 'ASC']
     ]]
         ]);
+
+        $this->set('bank', $bank);
+    }
+
+    /**
+     * View method
+     *
+     * @param string|null $id Bank id.
+     * @return \Cake\Http\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function view2($id = null)
+    {
+        if($this->request->is(['post'])){
+            $banks = $this->Banks->find('all', array('conditions' => array('name' => $this->request->data['name'])));
+            foreach($banks as $bank){
+                $id = $bank->id;
+            }
+        }
+        if(!empty($id)){
+            $bank = $this->Banks->get($id, [
+            'contain' => ['Managers', 'Users', 'Sellers', 'Photos', "Owners", "Settings" => [
+        'sort' => ['Settings.type' => 'ASC']
+    ]]
+        ]);
+        }else{
+            $this->redirect($this->referer());
+        }
+        
 
         $this->set('bank', $bank);
     }
@@ -223,5 +252,10 @@ class BanksController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function map(){
+         $banks = $this->Banks->find('all');
+         $this->set(compact('banks'));
     }
 }

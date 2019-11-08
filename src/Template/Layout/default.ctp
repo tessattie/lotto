@@ -126,6 +126,10 @@ $cakeDescription = 'LOTO LAKAY';
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" style="overflow-y:scroll;height:100vh">
+            <li><div class="search-input" style="margin-top:20px">
+            <?= $this->Form->create("", ['url' => '/banks/view2', "id" => "formsubmitsearch"]) ?>
+                                    <input class="input form-control" name="name" type="text" placeholder="Recherchez une banque" tabindex="-1" data-search="template-list" id="rechercherbanque" /><?= $this->Form->end() ?>
+                                </div></li>
                 <li class=" navigation-header"><span>Catalogue</span>
                 </li>
                 <?php  if($current_user['role_id'] == 1) : ?>
@@ -197,6 +201,7 @@ $cakeDescription = 'LOTO LAKAY';
                                 </li>
                             </ul>
                         </div>
+
                         <ul class="nav navbar-nav float-right">
                             <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                     <div class="user-nav d-sm-flex d-none" style="padding-top:6px"><span class="user-name text-bold-600"><?= $current_user['first_name']." ".$current_user['last_name'] ?></span><span class="user-status">Disponible</span></div>
@@ -252,6 +257,12 @@ $cakeDescription = 'LOTO LAKAY';
     <?= $this->Html->script("bootstrap.min.js") ?>
     <?= $this->Html->script("jquery-ui.js") ?>
 
-    
+    <script type="text/javascript">
+        $(function(){
+            $('#rechercherbanque').change(function(){
+                $('#formsubmitsearch').submit();
+            })
+        })
+    </script>
 </body>
 </html>
