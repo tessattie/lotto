@@ -144,4 +144,15 @@ class SellersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function delete3($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete', 'get']);
+        $seller = $this->Sellers->get($id);
+        $bank_id = $seller->bank_id;
+        $seller->bank_id = NULL;
+        $this->Sellers->save($seller);
+
+        return $this->redirect(["controller" => "banks", 'action' => 'edit', $bank_id]);
+    }
 }

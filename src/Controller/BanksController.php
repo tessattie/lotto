@@ -37,7 +37,9 @@ class BanksController extends AppController
     public function view($id = null)
     {
         $bank = $this->Banks->get($id, [
-            'contain' => ['Managers', 'Users', 'Sellers']
+            'contain' => ['Managers', 'Users', 'Sellers', 'Photos', "Owners", "Settings" => [
+        'sort' => ['Settings.type' => 'ASC']
+    ]]
         ]);
 
         $this->set('bank', $bank);
@@ -159,11 +161,38 @@ class BanksController extends AppController
     public function edit($id = null)
     {
         $bank = $this->Banks->get($id, [
-            'contain' => []
+            'contain' => ['Owners', "Sellers", "Managers", "Photos", "Settings"  => [
+        'sort' => ['Settings.type' => 'ASC']] ]
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $bank = $this->Banks->get($id, [
+            'contain' => []
+        ]);
             $bank = $this->Banks->patchEntity($bank, $this->request->getData());
-            if ($this->Banks->save($bank)) {
+
+            // debug($bank); die();
+            if ($newBank = $this->Banks->save($bank)) {
+                if(!empty($this->request->data['seller_id'])){
+                    $seller = $this->Banks->Sellers->get($this->request->data['seller_id']);
+                    $seller->bank_id = $newBank['id'];
+                    $this->Banks->Sellers->save($seller);
+                }
+
+                foreach($this->request->data['settings'] as $set){
+                    $setting = $this->Banks->SettingsBanks->get($set['id']);
+                    $setting = $this->Banks->SettingsBanks->patchEntity($setting, $set);
+                    $this->Banks->SettingsBanks->save($setting);
+                }
+                foreach($this->request->data['Photos']['location'] as $photo){
+                    if(!empty($photo['tmp_name'])){
+                        $location = $this->checkFile($photo, "photo_".rand(1000000,9999999), 1);
+                    $newPhoto = $this->Banks->Photos->newEntity();
+                    $newPhoto->bank_id = $newBank['id'];
+                    $newPhoto->location = $location;
+                    $this->Banks->Photos->save($newPhoto);
+                    }
+                    
+                }
                 $this->Flash->success(__('The bank has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -173,7 +202,7 @@ class BanksController extends AppController
         $managers = $this->Banks->Managers->find('list');
         $sellers = $this->Banks->Sellers->find('list');
         $owners = $this->Banks->Owners->find('list');
-        $this->set(compact('bank', 'managers', 'users'));
+        $this->set(compact('bank', 'managers', 'sellers', "owners"));
     }
 
     /**

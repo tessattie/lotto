@@ -35,10 +35,16 @@ $colors = array(1 => "#dff0d8", 2 => "#d9edf7", 3 => "#fcf8e3", 4 => "#f2dede", 
                             <h3 style="padding-bottom:10px">Profile</h3>
                         </div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?= $this->Form->control('name', array('label' => "Nom",'Placeholder' => "Nom", "type" => "text")); ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?= $this->Form->control('type', array('empty' => "--Choisissez --",'label' => "Type", "options" => array("Station d'Essence"))); ?>
+                        </div>
+                    </div>
                     <fieldset>
                         <?php
-                            echo $this->Form->control('name', array('label' => "Nom",'Placeholder' => "Nom", "type" => "text"));
                             echo $this->Form->control('address', array('label' => "Adresse",'Placeholder' => "Adresse", "type" => "text"));
                             echo $this->Form->control('rooms', array('label' => "Nb de Pièces",'Placeholder' => "Nombre de Pièces"));
                             echo $this->Form->control('price', array('label' => "Prix",'Placeholder' => "Prix de Location", "type" => "text"));
@@ -54,7 +60,7 @@ $colors = array(1 => "#dff0d8", 2 => "#d9edf7", 3 => "#fcf8e3", 4 => "#f2dede", 
     </div>
     <div class="col-md-6">
         <section> 
-                    <div class="card">
+                    <div class="card" style="padding-bottom: 10px;">
                     <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">

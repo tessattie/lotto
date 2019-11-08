@@ -98,14 +98,15 @@ class PhotosController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        $this->request->allowMethod(['post', 'delete', "get"]);
         $photo = $this->Photos->get($id);
+        $bank_id = $photo->bank_id;
         if ($this->Photos->delete($photo)) {
             $this->Flash->success(__('The photo has been deleted.'));
         } else {
             $this->Flash->error(__('The photo could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(["controller" => "banks", 'action' => 'edit', $bank_id]);
     }
 }

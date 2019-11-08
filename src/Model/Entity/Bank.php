@@ -38,6 +38,7 @@ class Bank extends Entity
     protected $_accessible = [
         'name' => true,
         'manager_id' => true,
+        'type' => true,
         'owner_id' => true,
         'address' => true,
         'lattitude' => true,
