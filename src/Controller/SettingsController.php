@@ -93,7 +93,7 @@ class SettingsController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        $this->request->allowMethod(['post', 'delete', 'get']);
         $setting = $this->Settings->get($id);
         if ($this->Settings->delete($setting)) {
             $this->Flash->success(__('The setting has been deleted.'));

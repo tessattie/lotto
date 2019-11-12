@@ -49,15 +49,45 @@ $ouinon = array('Oui', 'Non')
                 </div>
                 <div class="col-md-6" style="text-align:right">
                     <strong style="text-align:right"><?= $bank->name ?></strong><hr>
-                    
-                    
-                    <strong><?=(!empty($bank->address)) ? $bank->address : " - " ?></strong><hr>
-                    <strong style="text-align:right"><?= $bank->manager->first_name . " " . strtoupper($bank->manager->last_name)  ?></strong><hr>
+
+                    <?php if(!empty($bank->address)) : ?>
+                        <strong><?= $bank->address ?></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
+                    <?php if(!empty($bank->manager->first_name)) : ?>
+                        <strong style="text-align:right"><?= $bank->manager->first_name . " " . strtoupper($bank->manager->last_name)  ?></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
                     <strong><?= $stations[$bank->type] ?></strong><hr>
-                    <strong><?=(!empty($bank->rooms)) ? $bank->rooms : " - " ?></strong><hr>
-                    <strong><span class="badge badge-danger"><?= number_format($bank->price, 0, ".", ",") ?> HTG</span></strong><hr>
-                    <strong><?= date("j M Y", strtotime($bank->rental_date)) ?></strong><hr>
-                    <strong><?= date("j M Y", strtotime($bank->expiration)) ?></strong>
+
+                    <?php if(!empty($bank->rooms)) : ?>
+                        <strong><?= $bank->rooms ?></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
+                    <?php if(!empty($bank->price)) : ?>
+                        <strong><span class="badge badge-danger"><?= number_format($bank->price, 0, ".", ",") ?> HTG</span></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
+                    <?php if(!empty($bank->rental_date)) : ?>
+                        <strong><?= date("j M Y", strtotime($bank->rental_date)) ?></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
+                    <?php if(!empty($bank->expiration)) : ?>
+                        <strong><?= date("j M Y", strtotime($bank->expiration)) ?></strong>
+                    <?php else : ?>
+                        <strong>-</strong>
+                    <?php endif; ?>
+                    
                 </div>
             </div>
             
@@ -85,21 +115,41 @@ $ouinon = array('Oui', 'Non')
                 </div>
                 <div class="col-md-6" style="text-align:right">
                     <strong style="text-align:right"><?= $bank->manager->first_name . " " . strtoupper($bank->manager->last_name)  ?></strong><hr>
-                    <strong><?= $bank->manager->address ?></strong><hr>
+                    <?php if(!empty($bank->manager->address)) : ?>
+                        <strong><?= $bank->manager->address ?></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
                     <?php if(!empty($bank->manager->phone)) : ?>
                         <strong>+509-<?= $bank->manager->phone ?></strong><hr>
                     <?php else : ?>
                         <strong>-</strong><hr>
                     <?php endif; ?>
                     
-                    <strong><?=(!empty($bank->manager->nif)) ? $bank->manager->nif : " - " ?></strong><hr>
-                    <?php if(!empty($bank->manager->frais_fonctionnement)) : ?>
-                        <strong><?= number_format($bank->manager->frais_fonctionnement, 0, ".", ",") ?> HTG</strong><hr>
+                    <?php if(!empty($bank->manager->nif)) : ?>
+                        <strong><?= $bank->manager->nif ?></strong><hr>
                     <?php else : ?>
                         <strong>-</strong><hr>
                     <?php endif; ?>
-                    <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $bank->manager->contrat ?>" target="_blank"><div class="w-100 badge badge-success" style="width:70px!important;padding:5px">Voir</div></a></strong><hr>
-                    <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $bank->manager->ci ?>" target="_blank"><div class="w-100 badge badge-primary" style="width:70px!important;padding:5px">Voir</div></a></strong>
+
+                    <?php if(!empty($bank->manager->frais_fonctionnement)) : ?>
+                        <strong><?= number_format($bank->manager->frais_fonctionnement, 0, ".", " ") ?> HTG</strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
+                    <?php if(!empty($bank->manager->contrat)) : ?>
+                        <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $bank->manager->contrat ?>" target="_blank"><div class="w-100 badge badge-success" style="width:70px!important;padding:5px">Voir</div></a></strong><hr>
+                     <?php else : ?>
+                        -
+                     <?php endif; ?>
+
+                     <?php if(!empty($bank->manager->ci)) : ?>
+                        <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $bank->manager->ci ?>" target="_blank"><div class="w-100 badge badge-success" style="width:70px!important;padding:5px">Voir</div></a></strong>
+                     <?php else : ?>
+                        -
+                     <?php endif; ?>
                 </div>
             </div>
             
@@ -126,16 +176,37 @@ $ouinon = array('Oui', 'Non')
                 </div>
                 <div class="col-md-6" style="text-align:right">
                     <strong style="text-align:right"><?= $bank->owner->first_name . " " . strtoupper($bank->owner->last_name)  ?></strong><hr>
-                    <strong><?= $bank->owner->address ?></strong><hr>
+
+                    <?php if(!empty($bank->owner->address)) : ?>
+                        <strong><?= $bank->owner->address ?></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
                     <?php if(!empty($bank->owner->phone)) : ?>
                         <strong>+509-<?= $bank->owner->phone ?></strong><hr>
                     <?php else : ?>
                         <strong>-</strong><hr>
                     <?php endif; ?>
-                    
-                    <strong><?= $bank->owner->nif ?></strong><hr>
-                    <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $bank->owner->contrat ?>" target="_blank"><div class="w-100 badge badge-success" style="width:70px!important;padding:5px">Voir</div></a></strong><hr>
-                    <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $bank->owner->ci ?>" target="_blank"><div class="w-100 badge badge-primary" style="width:70px!important;padding:5px">Voir</div></a></strong>
+
+                    <?php if(!empty($bank->owner->nif)) : ?>
+                        <strong><?= $bank->owner->nif ?></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
+                     <?php if(!empty($bank->owner->contrat)) : ?>
+                        <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $bank->owner->contrat ?>" target="_blank"><div class="w-100 badge badge-success" style="width:70px!important;padding:5px">Voir</div></a></strong><hr>
+                     <?php else : ?>
+                        -
+                     <?php endif; ?>
+
+                     <?php if(!empty($bank->owner->ci)) : ?>
+                        <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $bank->owner->ci ?>" target="_blank"><div class="w-100 badge badge-success" style="width:70px!important;padding:5px">Voir</div></a></strong>
+                     <?php else : ?>
+                        -
+                     <?php endif; ?>
+
                 </div>
             </div>
             
@@ -163,16 +234,35 @@ $ouinon = array('Oui', 'Non')
                 </div>
                 <div class="col-md-6" style="text-align:right">
                     <strong style="text-align:right"><?= $seller->first_name." ".strtoupper($seller->last_name) ?></strong><hr>
-                    <strong><?= $seller->address ?></strong><hr>
+                    <?php if(!empty($seller->address)) : ?>
+                        <strong><?= $seller->address ?></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
                     <?php if(!empty($seller->phone)) : ?>
                         <strong>+509-<?= $seller->phone ?></strong><hr>
                     <?php else : ?>
                         <strong>-</strong><hr>
                     <?php endif; ?>
-                    
-                    <strong><?= $seller->nif ?></strong><hr>
-                    <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $seller->contrat ?>" target="_blank"><div class="w-100 badge badge-success" style="width:70px!important;padding:5px">Voir</div></a></strong><hr>
-                    <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $seller->ci ?>" target="_blank"><div class="w-100 badge badge-primary" style="width:70px!important;padding:5px">Voir</div></a></strong>
+
+                    <?php if(!empty($seller->nif)) : ?>
+                        <strong><?= $seller->nif ?></strong><hr>
+                    <?php else : ?>
+                        <strong>-</strong><hr>
+                    <?php endif; ?>
+
+                     <?php if(!empty($seller->contrat)) : ?>
+                        <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $seller->contrat ?>" target="_blank"><div class="w-100 badge badge-success" style="width:70px!important;padding:5px">Voir</div></a></strong><hr>
+                     <?php else : ?>
+                        -
+                     <?php endif; ?>
+
+                     <?php if(!empty($seller->ci)) : ?>
+                        <strong style="width:150px;height:35px"><a style="width:150px;height:35px" href="<?= ROOT_DIREC ?>/tmp/files/<?= $seller->ci ?>" target="_blank"><div class="w-100 badge badge-success" style="width:70px!important;padding:5px">Voir</div></a></strong>
+                     <?php else : ?>
+                        -
+                     <?php endif; ?>
                 </div>
             </div>
             
@@ -200,7 +290,6 @@ $ouinon = array('Oui', 'Non')
                                             <th class="text-left">Type</th>
                                             <th class="text-center">Description</th>
                                             <th class="text-center">Quantité</th>
-                                            <th class="text-center">Prix</th>
                                             <th class="text-center">Date</th>
                                             <th class="text-right">Statut</th>
                                         </tr>
@@ -214,10 +303,10 @@ $ouinon = array('Oui', 'Non')
                                                 <?=$setting->get('_joinData')['quantity'] ; ?>
                                             </td>
                                             <td class="text-center">
-                                                <?= number_format($setting->get('_joinData')['price'],0,".", ",") ; ?> HTG
-                                            </td>
-                                            <td class="text-center">
-                                                <?=$setting->get('_joinData')['date'] ; ?>
+                                                <?php if(!empty($setting->get('_joinData')['date'])) : ?>
+                                                    <?= date("j M Y", strtotime($setting->get('_joinData')['date'])) ?>
+                                                <?php endif; ?>
+
                                             </td>
                                             <td class="text-right">
                                             <?php if($setting->get('_joinData')['status'] == 1) : ?>

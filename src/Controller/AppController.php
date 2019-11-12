@@ -42,6 +42,7 @@ class AppController extends Controller
     {
         parent::initialize();
         define("ROOT_DIREC", '/yann');
+        // define("ROOT_DIREC", '');
 
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
@@ -96,7 +97,7 @@ class AppController extends Controller
         $allowed_extensions = array('pdf', "xls", "xlsx", "doc", "docx");
         if(!$file['error']){
             $extension = explode("/", $file['type'])[1];
-            // $dossier = 'C:/wamp/www'.ROOT_DIREC.'/webroot/img/'.$directory.'/';
+            // $dossier = '/home/dhf8co1jhtoy'.ROOT_DIREC.'/webroot/img/'.$directory.'/';
             $dossier = 'C:/wamp/www'.ROOT_DIREC.'/webroot/tmp/files/';
             if($extensionn == 2){
                 if(move_uploaded_file($file['tmp_name'], $dossier . $name . ".xlsx")){

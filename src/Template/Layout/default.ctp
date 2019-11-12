@@ -126,6 +126,7 @@ $cakeDescription = 'LOTO LAKAY';
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" style="overflow-y:scroll;height:100vh">
+            <li><h2 class="brand-text mb-0 text-center" style="width:100%;padding-top:20px!important">Loto Lakay</h2></li>
             <li><div class="search-input" style="margin-top:20px">
             <?= $this->Form->create("", ['url' => '/banks/view2', "id" => "formsubmitsearch"]) ?>
                                     <input class="input form-control" name="name" type="text" placeholder="Recherchez une banque" tabindex="-1" data-search="template-list" id="rechercherbanque" /><?= $this->Form->end() ?>
@@ -182,23 +183,7 @@ $cakeDescription = 'LOTO LAKAY';
                     <div class="navbar-collapse" id="navbar-mobile">
                         <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                             <ul class="nav navbar-nav">
-                            <li class="nav-item mr-auto"><a class="navbar-brand" href="<?= ROOT_DIREC ?>">
-                                    <h2 class="brand-text mb-0" style="width:100%;padding:0px!important">Loto Lakay</h2>
-                                </a></li>
                                 <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
-                            </ul>
-                            <ul class="nav navbar-nav">
-                                    <div class="bookmark-input search-input">
-                                        <div class="bookmark-input-icon"><i class="feather icon-search primary"></i></div>
-                                        <input class="form-control input" type="text" placeholder="Explore Vuesax..." tabindex="0" data-search="template-list" />
-                                        <ul class="search-list"></ul>
-                                    </div>
-                                    <!-- select.bookmark-select-->
-                                    <!--   option Chat-->
-                                    <!--   option email-->
-                                    <!--   option todo-->
-                                    <!--   option Calendar-->
-                                </li>
                             </ul>
                         </div>
 
@@ -256,6 +241,10 @@ $cakeDescription = 'LOTO LAKAY';
     <?= $this->Html->script("popper.min.js") ?>
     <?= $this->Html->script("bootstrap.min.js") ?>
     <?= $this->Html->script("jquery-ui.js") ?>
+    <?= $this->Html->script("vendors/js/vendors.min.js") ?>
+    <?= $this->Html->script("theme/core/app-menu.min.js") ?>
+    <?= $this->Html->script("theme/core/app.min.js") ?>
+    <?= $this->Html->script("theme/scripts/components.min.js") ?>
 
     <script type="text/javascript">
         $(function(){

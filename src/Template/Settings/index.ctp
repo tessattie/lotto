@@ -38,7 +38,7 @@ $colors = array(1 => "#dff0d8", 2 => "#d9edf7", 3 => "#fcf8e3", 4 => "#f2dede", 
                                     <td class="text-left"><?= $types[$setting->type] ?></td>
                                     <td class="text-center"><?= $setting->name ?></td>
                                     <td class="text-right"><a href="<?= ROOT_DIREC ?>/settings/edit/<?= $setting->id ?>"><i class="m-1 feather icon-edit-2"></i></a>
-                                        <a href="<?= ROOT_DIREC ?>/furnitures/settings/<?= $setting->id ?>"><i class="feather icon-trash"></i></a></td>
+                                        <a href="<?= ROOT_DIREC ?>/settings/delete/<?= $setting->id ?>"><i class="feather icon-trash"></i></a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

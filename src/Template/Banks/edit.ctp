@@ -143,7 +143,6 @@ $colors = array(1 => "#dff0d8", 2 => "#d9edf7", 3 => "#fcf8e3", 4 => "#f2dede", 
                                             <th class="text-left">Type</th>
                                             <th class="text-center">Description</th>
                                             <th class="text-center">Quantité</th>
-                                            <th class="text-center">Prix</th>
                                             <th class="text-center">Date</th>
                                             <th class="text-right">Statut</th>
                                         </tr>
@@ -162,9 +161,6 @@ $colors = array(1 => "#dff0d8", 2 => "#d9edf7", 3 => "#fcf8e3", 4 => "#f2dede", 
                                             <td class="text-center"><?= $setting->name ?></td>
                                             <td>
                                                 <?php echo $this->Form->control('settings.'.$h.'.quantity', array('label' => false,'Placeholder' => "Quantité", "required" => false, "value" => $setting->get('_joinData')['quantity'])); ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $this->Form->control('settings.'.$h.'.price', array('label' => false,'Placeholder' => "Prix", "required" => false, "value" => $setting->get('_joinData')['price'])); ?>
                                             </td>
                                             <td>
                                                 <?php echo $this->Form->control('settings.'.$h.'.date', array('label' => false,'Placeholder' => "Date", "required" => false, 'id' => "datepicker".$j, "type" => "text", "value" => $date)); ?>
